@@ -17,7 +17,7 @@ void floodfill_util(int m, int n, char **map, int i, int j)
         floodfill_util(m, n, map, i, j-1);
     }
     //this will do recursive to change the founded island to water
-    //sowe can count all the island appear on the map
+    //so we can count all the island appear on the map
 }
 
 void floodfill(int m, int n, char **map, int i, int j)

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void floodfill_util(int m, int n, char **map, int i, int j)
+void floodfill(int m, int n, char **map, int i, int j)
 {
     //if out of map's boundary or is water do nothing
     if (i < 0 || j < 0 || i == m || j == n || map[i][j] == '-')
@@ -9,25 +9,17 @@ void floodfill_util(int m, int n, char **map, int i, int j)
     //if it's land look for its up down left and right
     if(map[i][j] == 'x')
     {
-        //change it to water too
+        //change it to water
+        //using floodfill algorithm
+        //look on the up down left and right
         map[i][j] = '-';
-        floodfill_util(m, n, map, i+1, j);
-        floodfill_util(m, n, map, i-1, j);
-        floodfill_util(m, n, map, i, j+1);
-        floodfill_util(m, n, map, i, j-1);
+        floodfill(m, n, map, i+1, j);
+        floodfill(m, n, map, i-1, j);
+        floodfill(m, n, map, i, j+1);
+        floodfill(m, n, map, i, j-1);
     }
     //this will do recursive to change the founded island to water
     //so we can count all the island appear on the map
-}
-
-void floodfill(int m, int n, char **map, int i, int j)
-{
-    //using floodfill algorithm
-    //look on the up down left and right
-    floodfill_util(m, n, map, i+1, j);
-    floodfill_util(m, n, map, i-1, j);
-    floodfill_util(m, n, map, i, j+1);
-    floodfill_util(m, n, map, i, j-1);
 }
 void printMap(int m, int n,char **map)
 {
